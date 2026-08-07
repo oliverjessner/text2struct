@@ -1,4 +1,4 @@
-import { StructPasteError } from "./errors.js";
+import { Text2StructError } from "./errors.js";
 import { parseRaw } from "./parsers.js";
 import { applySchema, normalizeSchema } from "./schema.js";
 
@@ -44,7 +44,7 @@ export function parse(input, options = {}) {
   for (const record of rawRecords) {
     const result = applySchema(record.value, schema, record.row);
     if (result.errors.length > 0) {
-      if (mode === "throw") throw new StructPasteError(result.errors[0]);
+      if (mode === "throw") throw new Text2StructError(result.errors[0]);
       if (mode === "collect") errors.push(...result.errors);
       continue;
     }

@@ -1,7 +1,7 @@
 import { parse } from "./parse.js";
 import { serialize } from "./serialize.js";
 
-export { StructPasteError } from "./errors.js";
+export { Text2StructError } from "./errors.js";
 export { parse } from "./parse.js";
 export { serialize } from "./serialize.js";
 

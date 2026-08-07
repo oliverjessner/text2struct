@@ -3,12 +3,12 @@
 import { readFile } from "node:fs/promises";
 import process from "node:process";
 import { parseArgs } from "node:util";
-import { convert, StructPasteError } from "../src/index.js";
+import { convert, Text2StructError } from "../src/index.js";
 
-const HELP = `StructPaste — convert text lists into structured data
+const HELP = `Text2Struct — convert text lists into structured data
 
 Usage:
-  structpaste [file|-] --schema <schema> [options]
+  text2struct [file|-] --schema <schema> [options]
 
 Options:
   --schema <value>       Inline name:type pairs or path to a JSON schema (required)
@@ -132,9 +132,9 @@ async function main() {
 }
 
 main().catch(error => {
-  const message = error instanceof StructPasteError
+  const message = error instanceof Text2StructError
     ? JSON.stringify(error.toJSON())
     : error.message;
-  process.stderr.write(`structpaste: ${message}\n`);
+  process.stderr.write(`text2struct: ${message}\n`);
   process.exitCode = 1;
 });

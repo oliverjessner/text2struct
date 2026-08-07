@@ -1,4 +1,4 @@
-import { convert } from 'structpaste';
+import { convert } from 'text2struct';
 
 const input = `
 pixelpanda

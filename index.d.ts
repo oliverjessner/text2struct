@@ -64,7 +64,7 @@ export interface CollectConvertOptions extends Omit<ConvertOptions, "errors"> {
   errors: "collect";
 }
 
-export class StructPasteError extends Error implements ParseIssue {
+export class Text2StructError extends Error implements ParseIssue {
   row: number;
   property: string;
   value: unknown;

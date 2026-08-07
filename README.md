@@ -1,28 +1,28 @@
-# StructPaste
+# Text2Struct
 
 Convert text lists into structured data.
 
-StructPaste is a small, dependency-free JavaScript library and CLI for turning
+Text2Struct is a small, dependency-free JavaScript library and CLI for turning
 plain text into JSON, JSON Lines, CSV, TSV, Markdown tables, YAML, or
-SQLite-compatible SQL. You define the properties; StructPaste handles parsing,
+SQLite-compatible SQL. You define the properties; Text2Struct handles parsing,
 type conversion, validation, transformation, deduplication, and output.
 
 ## Install
 
 ```bash
-npm install structpaste
+npm install text2struct
 ```
 
 For the CLI:
 
 ```bash
-npm install -g structpaste
+npm install -g text2struct
 ```
 
 ## Quick start
 
 ```js
-import { convert } from 'structpaste';
+import { convert } from 'text2struct';
 
 const result = convert({
     input: `
@@ -62,7 +62,7 @@ console.log(result);
 Turn text into JavaScript objects:
 
 ```js
-import { parse } from 'structpaste';
+import { parse } from 'text2struct';
 
 const data = parse('Oliver | Salzburg | 34', {
     schema: {
@@ -82,7 +82,7 @@ const data = parse('Oliver | Salzburg | 34', {
 Convert records to another format:
 
 ```js
-import { serialize } from 'structpaste';
+import { serialize } from 'text2struct';
 
 const markdown = serialize(data, { format: 'markdown' });
 ```
@@ -201,7 +201,7 @@ The first matching record is kept.
 
 ## Error handling
 
-The default `throw` mode raises a `StructPasteError` on the first invalid row:
+The default `throw` mode raises a `Text2StructError` on the first invalid row:
 
 ```js
 parse(input, { schema, parser, errors: 'throw' });
@@ -273,7 +273,7 @@ const schema = {
 Helpers are available as a separate export:
 
 ```js
-import { createTableSQL, insertSQL } from 'structpaste/sqlite';
+import { createTableSQL, insertSQL } from 'text2struct/sqlite';
 
 const create = createTableSQL('people', schema);
 const insert = insertSQL('people', [{ name: 'Oliver', age: 34 }]);
@@ -282,7 +282,7 @@ const insert = insertSQL('people', [{ name: 'Oliver', age: 34 }]);
 ## CLI
 
 ```bash
-structpaste people.txt \
+text2struct people.txt \
   --schema 'name:string,city:string,age:integer' \
   --delimiter '|' \
   --output json
@@ -292,20 +292,20 @@ Other examples:
 
 ```bash
 # Markdown table
-structpaste people.txt \
+text2struct people.txt \
   --schema 'name:string,city:string,age:integer' \
   --delimiter '|' \
   --output markdown
 
 # Deduplicate by email
-structpaste people.txt \
+text2struct people.txt \
   --schema 'name:string,email:string' \
   --delimiter '|' \
   --deduplicate email \
   --output json
 
 # SQLite using a JSON schema file
-structpaste people.txt \
+text2struct people.txt \
   --schema schema.json \
   --delimiter '|' \
   --output sqlite \
@@ -313,12 +313,12 @@ structpaste people.txt \
   --create-table
 
 # Read from stdin
-printf 'Oliver|34\n' | structpaste - \
+printf 'Oliver|34\n' | text2struct - \
   --schema 'name:string,age:integer' \
   --delimiter '|'
 ```
 
-Run `structpaste --help` for all options.
+Run `text2struct --help` for all options.
 
 ## Philosophy
 

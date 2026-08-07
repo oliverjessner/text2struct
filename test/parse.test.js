@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parse, StructPasteError } from "../src/index.js";
+import { parse, Text2StructError } from "../src/index.js";
 
 const peopleSchema = { name: "string", city: "string", age: "integer" };
 
@@ -88,7 +88,7 @@ test("throw, collect, and skip error modes behave consistently", () => {
     parser: { type: "delimiter", delimiter: "|" }
   };
   assert.throws(() => parse("Oliver|abc", options), error => {
-    assert.ok(error instanceof StructPasteError);
+    assert.ok(error instanceof Text2StructError);
     assert.equal(error.code, "INVALID_INTEGER");
     assert.equal(error.row, 1);
     return true;

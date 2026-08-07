@@ -1,7 +1,7 @@
-export class StructPasteError extends Error {
+export class Text2StructError extends Error {
   constructor(issue) {
     super(issue.message);
-    this.name = "StructPasteError";
+    this.name = "Text2StructError";
     this.row = issue.row;
     this.property = issue.property;
     this.value = issue.value;

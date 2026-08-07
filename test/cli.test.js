@@ -17,7 +17,7 @@ function run(executable, args, options = {}) {
     child.stdin.end(options.input ?? "");
   });
 }
-const cli = new URL("../bin/structpaste.js", import.meta.url);
+const cli = new URL("../bin/text2struct.js", import.meta.url);
 
 test("CLI converts stdin with an inline schema", async () => {
   const { stdout } = await run(process.execPath, [

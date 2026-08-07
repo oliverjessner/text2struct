@@ -1,6 +1,6 @@
 {
-    "name": "structpaste",
-    "version": "0.1.1",
+    "name": "text2struct",
+    "version": "0.1.2",
     "description": "Convert plain-text lists into structured data.",
     "type": "module",
     "main": "./src/index.js",
@@ -16,7 +16,7 @@
         }
     },
     "bin": {
-        "structpaste": "bin/structpaste.js"
+        "text2struct": "bin/text2struct.js"
     },
     "files": [
         "bin",
