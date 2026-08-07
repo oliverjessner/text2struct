@@ -1,0 +1,46 @@
+{
+  "name": "structpaste",
+  "version": "0.1.0",
+  "description": "Convert plain-text lists into structured data.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./sqlite": {
+      "types": "./sqlite.d.ts",
+      "import": "./src/sqlite.js"
+    }
+  },
+  "bin": {
+    "structpaste": "./bin/structpaste.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "index.d.ts",
+    "sqlite.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "text",
+    "parser",
+    "csv",
+    "json",
+    "yaml",
+    "sqlite",
+    "cli"
+  ],
+  "license": "MIT"
+}
